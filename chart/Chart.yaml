@@ -1,0 +1,6 @@
+apiVersion: v2
+name: user-portal
+description: A Helm chart for deploying the Flask User Management Application
+type: application
+version: 0.0.1
+appVersion: "1.0"

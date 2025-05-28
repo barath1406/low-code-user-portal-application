@@ -1,0 +1,25 @@
+# Development environment specific values
+serviceAccount:
+  create: true
+  name: "barath-user-portal-sa"
+  iamRole: "arn:aws:iam::1234567890:role/barath-user-portal-role"
+
+podAnnotations: {}
+
+ingress:
+  enabled: true
+  className: "alb"
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/healthcheck-path: /
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:1234567890:certificate/0d69fdac-221c-4dac-a064-78f35a430
+    alb.ingress.kubernetes.io/inbound-cidrs: "0.0.0.0/1,128.0.0.0/1"
+    alb.ingress.kubernetes.io/load-balancer-name: "k8s-barath-user-portal-alb"
+  hosts:
+    - host: ""
+      paths:
+        - path: /
+          pathType: Prefix
